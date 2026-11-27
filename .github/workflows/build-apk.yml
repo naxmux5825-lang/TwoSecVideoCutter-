@@ -1,4 +1,3 @@
-
 name: Build Android APK
 
 on:
@@ -32,11 +31,12 @@ jobs:
           gradle-version: '8.9'
 
       - name: Build debug APK
+        working-directory: extracted/TwoSecVideoCutter
         run: gradle --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: TwoSecVideoCutter-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: extracted/TwoSecVideoCutter/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
